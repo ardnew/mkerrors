@@ -32,7 +32,7 @@ open my $src, "<", $ENV{GOFILE} or die "error: ${ENV{GOFILE}}: $!\n";
 while (<$src>) {
   chomp;
   if ($. > $ENV{GOLINE}) {
-    last unless m{^//}; # Stop once we reach an uncommented line.
+    last unless m{^\s*//}; # Stop once we reach an uncommented line.
     push @error, m{(?://|\s+)(\S+)}g
   }
 }
@@ -63,4 +63,4 @@ open $src, ">", $ENV{GOFILE} or die "error: ${ENV{GOFILE}}: $!\n";
 close $src;
 
 # Format the generated Go source file.
-exec { "gofmt" } qw{ gofmt -w -s }, $ENV{GOFILE}
+exec { "gofmt" } qw{ gofmt -w -s }, $ENV{GOFILE};
