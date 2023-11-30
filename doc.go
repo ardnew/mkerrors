@@ -88,5 +88,4 @@ accordingly without any unnecessary duplication or outdated content.
 [the script]: mkerrors.pl
 [go generate]: https://go.dev/blog/generate
 */
-
 package mkerrors
